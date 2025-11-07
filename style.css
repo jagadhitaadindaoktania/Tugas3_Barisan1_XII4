@@ -1,86 +1,114 @@
-/* Pengaturan Dasar */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7f6; /* Warna latar belakang halaman */
-    color: #333;
+/* ----- Definisi Variabel Warna Tema Coklat ----- */
+:root {
+    --bg-color: #FDF5E6;          /* Latar belakang (Old Lace / Beige muda) */
+    --card-bg: #FFFFFF;           /* Latar belakang kartu (Putih) */
+    --primary-brown: #8B4513;     /* Coklat tua (Saddle Brown) - untuk Judul, Border */
+    --secondary-brown: #A0522D;   /* Coklat sedang (Sienna) - untuk Label */
+    --text-color: #3D2B1F;        /* Teks (Coklat sangat tua / Almost Black) */
+    --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Penataan Header */
+/* ----- Reset Dasar & Gaya Global ----- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ----- Header (Judul Utama) ----- */
 header {
     text-align: center;
-    padding: 40px 20px;
-    background-color: #34495e; /* Warna biru tua */
-    color: white;
+    padding: 2.5rem 1rem;
 }
 
 header h1 {
-    margin: 0;
     font-size: 2.5rem;
+    color: var(--primary-brown);
+    font-weight: 700;
 }
 
-header p {
-    font-size: 1.1rem;
-    color: #ecf0f1; /* Warna putih gading */
-}
-
-/* Grid untuk Portofolio */
-.portfolio-grid {
+/* ----- Kontainer Portofolio (Grid Responsif) ----- */
+.portfolio-container {
     display: grid;
-    /* Membuat kolom yang responsif:
-      - 'auto-fit': Buat kolom sebanyak mungkin.
-      - 'minmax(300px, 1fr)': Setiap kolom minimal 300px, 
-        tapi bisa membesar (1fr) untuk mengisi ruang.
+    /* Membuat kolom responsif: 
+       - auto-fit: Buat kolom sebanyak mungkin
+       - minmax(320px, 1fr): Setiap kolom minimal 320px, 
+         dan bisa membesar (1fr) untuk mengisi ruang.
     */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px; /* Jarak antar item */
-    padding: 30px;
-    max-width: 1400px; /* Lebar maksimum konten */
-    margin: 0 auto; /* Pusatkan grid */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem; /* Jarak antar kartu */
+    padding: 0 2rem 2rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto; /* Pusatkan kontainer */
 }
 
-/* Penataan Kartu Item Portofolio */
-.portfolio-item {
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bayangan halus */
-    overflow: hidden; /* Memastikan gambar tidak keluar dari radius */
+/* ----- Kartu Portofolio Individual ----- */
+.portfolio-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--primary-brown);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    overflow: hidden; /* Agar gambar tidak keluar dari radius border */
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efek Hover pada Kartu */
-.portfolio-item:hover {
-    transform: translateY(-8px); /* Sedikit terangkat saat di-hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+.portfolio-card:hover {
+    transform: translateY(-8px); /* Efek sedikit terangkat saat di-hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Penataan Gambar */
-.portfolio-item img {
+/* ----- Gambar di Kartu ----- */
+.portfolio-card img {
     width: 100%;
     height: 250px; /* Tinggi gambar dibuat seragam */
-    object-fit: cover; /* Mencegah gambar penyet/distorsi */
+    object-fit: cover; /* Mencegah gambar penyet/stretch */
     display: block;
+    border-bottom: 1px solid var(--primary-brown);
 }
 
-/* Penataan Konten Teks di dalam Kartu */
-.portfolio-item .info {
-    padding: 20px;
+/* ----- Konten Teks di Kartu ----- */
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1; /* Memastikan konten mengisi sisa ruang kartu */
 }
 
-.portfolio-item h2 {
+.card-content h2 {
     font-size: 1.5rem;
-    color: #2c3e50; /* Warna biru gelap untuk nama */
-    margin-top: 0;
-    margin-bottom: 15px;
+    color: var(--primary-brown);
+    margin-bottom: 0.75rem;
 }
 
-.portfolio-item p {
+.card-content p {
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
-.portfolio-item p strong {
-    color: #555; /* Warna label (Alamat, Hobi) */
+.card-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ----- Label (Alamat, Hobi, Deskripsi) ----- */
+.card-content p strong {
+    color: var(--secondary-brown); /* Warna coklat sedang untuk label */
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* ----- Footer ----- */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    background-color: var(--primary-brown);
+    color: var(--bg-color); /* Teks warna terang di atas latar coklat tua */
+    font-size: 0.9rem;
 }
