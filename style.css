@@ -1,27 +1,18 @@
 /* Pengaturan Dasar */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f7f6; /* Warna latar belakang halaman */
+    color: #333;
 }
 
-/* Container Utama */
-main, header, footer {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Header */
+/* Penataan Header */
 header {
     text-align: center;
-    background-color: #0056b3;
-    color: #ffffff;
-    padding: 30px;
-    border-radius: 0 0 10px 10px;
+    padding: 40px 20px;
+    background-color: #34495e; /* Warna biru tua */
+    color: white;
 }
 
 header h1 {
@@ -29,95 +20,67 @@ header h1 {
     font-size: 2.5rem;
 }
 
-/* Judul Bagian */
-h2 {
-    color: #004a99;
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 10px;
-    margin-top: 30px;
-}
-
-h3 {
-    color: #555;
-    margin-top: 25px;
-}
-
-/* Bagian Konten (Tentang & Tim) */
-section {
-    background-color: #ffffff;
-    margin-bottom: 20px;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-#tentang ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-#tentang p, #tentang li {
+header p {
     font-size: 1.1rem;
+    color: #ecf0f1; /* Warna putih gading */
 }
 
-/* Garis Pemisah */
-hr {
-    border: 0;
-    height: 1px;
-    background-color: #ddd;
-    margin: 30px auto;
-    width: 90%;
+/* Grid untuk Portofolio */
+.portfolio-grid {
+    display: grid;
+    /* Membuat kolom yang responsif:
+      - 'auto-fit': Buat kolom sebanyak mungkin.
+      - 'minmax(300px, 1fr)': Setiap kolom minimal 300px, 
+        tapi bisa membesar (1fr) untuk mengisi ruang.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Jarak antar item */
+    padding: 30px;
+    max-width: 1400px; /* Lebar maksimum konten */
+    margin: 0 auto; /* Pusatkan grid */
 }
 
-/* Kontainer Galeri (Menggunakan Flexbox) */
-.gallery-container {
-    display: flex;
-    flex-wrap: wrap; /* Akan pindah ke baris baru jika tidak muat */
-    justify-content: center; /* Foto-foto akan terpusat */
-    gap: 20px; /* Jarak antar foto */
-}
-
-/* Item Galeri (Foto dan Nama) */
-.gallery-item {
-    width: 200px; /* Lebar setiap item */
-    text-align: center;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    background-color: #fdfdfd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* Penataan Kartu Item Portofolio */
+.portfolio-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Bayangan halus */
+    overflow: hidden; /* Memastikan gambar tidak keluar dari radius */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efek hover pada item galeri */
-.gallery-item:hover {
-    transform: translateY(-5px); /* Sedikit terangkat */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+/* Efek Hover pada Kartu */
+.portfolio-item:hover {
+    transform: translateY(-8px); /* Sedikit terangkat saat di-hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Gambar di dalam galeri */
-.gallery-item img {
-    width: 100%; /* Gambar akan memenuhi lebar item */
-    height: 200px; /* Tinggi gambar dibuat sama */
-    object-fit: cover; /* Memastikan gambar terpotong rapi, tidak gepeng */
-    border-radius: 5px;
+/* Penataan Gambar */
+.portfolio-item img {
+    width: 100%;
+    height: 250px; /* Tinggi gambar dibuat seragam */
+    object-fit: cover; /* Mencegah gambar penyet/distorsi */
+    display: block;
+}
+
+/* Penataan Konten Teks di dalam Kartu */
+.portfolio-item .info {
+    padding: 20px;
+}
+
+.portfolio-item h2 {
+    font-size: 1.5rem;
+    color: #2c3e50; /* Warna biru gelap untuk nama */
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.portfolio-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
     margin-bottom: 10px;
 }
 
-/* Nama di bawah foto */
-.gallery-item p {
-    margin: 0;
-    font-weight: 600;
-    color: #0056b3;
-    font-size: 1.1rem;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 30px;
-    padding: 20px;
-    color: #777;
-    font-size: 0.9rem;
-    border-top: 1px solid #e0e0e0;
+.portfolio-item p strong {
+    color: #555; /* Warna label (Alamat, Hobi) */
 }
